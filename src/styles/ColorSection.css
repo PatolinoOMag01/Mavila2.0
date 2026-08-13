@@ -1,52 +1,76 @@
-.colors-section{
-    background:#080808;
-    color:white;
-    padding:120px 8%;
+.colors-section {
+    background: #080808;
+    color: white;
+    padding: 80px 8%;
 }
 
-.colors-section h1{
-    text-align:center;
-    font-size:50px;
-    margin-bottom:80px;
-    letter-spacing:5px;
+.colors-section h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
 }
 
-.colors-container{
-    display:flex;
-    gap:30px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
+/* CARROSSEL */
+
+.colors-container {
+    display: flex;
+    gap: 25px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    padding-bottom: 10px;
 }
 
-.colors-container::-webkit-scrollbar{
-    height:8px;
+.colors-container::-webkit-scrollbar {
+    display: none;
 }
 
-.colors-container::-webkit-scrollbar-thumb{
-    background:#222;
-    border-radius:50px;
+/* CARD */
+
+.color-card {
+    flex: 0 0 300px;
+
+    background: #111;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    transition: transform .4s ease;
+
+    cursor: pointer;
 }
 
-.color-card{
-    min-width:350px;
-    background:#111;
-    border-radius:30px;
-    padding:40px;
-    transition:.4s;
-    cursor:pointer;
+.color-card:hover {
+    transform: translateY(-8px);
 }
 
-.color-card:hover{
-    transform:translateY(-10px);
+/* IMAGEM */
+
+.color-card img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: contain;
+
+    display: block;
 }
 
-.color-card img{
-    width:100%;
-}
+/* NOME DA COR */
 
-.color-card h2{
-    margin-top:30px;
-    text-align:center;
-    letter-spacing:3px;
-    color:#ddd;
+.color-card h2 {
+    margin-top: 20px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    letter-spacing: 2px;
+
+    color: #ddd;
 }
