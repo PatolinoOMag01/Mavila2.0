@@ -852,3 +852,176 @@ body {
 
     z-index:-1;
 }
+
+/* ========================================
+   RESPONSIVO MOBILE - MAVILA
+======================================== */
+
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+
+  .navbar,
+  .navbar-scrolled {
+    padding: 14px 18px;
+    min-height: 68px;
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(18px);
+  }
+
+  .navbar-logo a {
+    font-size: 19px;
+    letter-spacing: 3px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .cart-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+  }
+
+
+  /* HERO */
+
+  .hero {
+    min-height: 100svh;
+    padding: 0;
+  }
+
+  .hero-container {
+    min-height: 100svh;
+
+    padding:
+      110px
+      22px
+      45px;
+
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(52px, 16vw, 72px);
+    line-height: 0.9;
+
+    margin-bottom: 22px;
+  }
+
+  .hero-content p {
+    max-width: 340px;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    margin-bottom: 28px;
+  }
+
+  .hero-buttons {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    flex: 1;
+
+    max-width: 170px;
+
+    padding: 14px 15px;
+
+    font-size: 14px;
+
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .hero-image {
+    width: 100%;
+
+    margin-top: 25px;
+  }
+
+  .hero-image img {
+    width: min(95vw, 390px);
+
+    margin-top: 0;
+  }
+
+  .hero-image::before {
+    width: 280px;
+    height: 280px;
+
+    filter: blur(110px);
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navbar-logo a {
+    font-size: 17px;
+  }
+
+  .hero-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 50px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-image img {
+    width: 320px;
+    max-width: 100%;
+  }
+}
