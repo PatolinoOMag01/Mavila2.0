@@ -17,17 +17,11 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/mv01" element={<Product />} />
-
         <Route path="/favorites" element={<Favorites />} />
-
         <Route path="/checkout" element={<Checkout />} />
-
         <Route path="/club" element={<MVClub />} />
-
         <Route path="/profile" element={<Profile />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

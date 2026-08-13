@@ -1,0 +1,113 @@
+.related {
+  padding: 120px 8%;
+  background: #0f0f0f;
+}
+
+.related-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.related-header span {
+  color: #888;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.related-header h2 {
+  color: white;
+  font-size: 42px;
+  margin-top: 10px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.related-card {
+  background: #171717;
+  border: 1px solid #222;
+  border-radius: 24px;
+  overflow: hidden;
+
+  transition: 0.35s ease;
+}
+
+.related-card:hover {
+  transform: translateY(-10px);
+
+  border-color: #444;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.related-image {
+  height: 260px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.05),
+      transparent
+    );
+}
+
+.related-image img {
+  width: 80%;
+  transition: 0.35s ease;
+}
+
+.related-card:hover img {
+  transform: scale(1.08);
+}
+
+.related-content {
+  padding: 25px;
+}
+
+.related-content h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.related-content p {
+  color: #bcbcbc;
+  margin-bottom: 20px;
+}
+
+.related-content button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: white;
+  color: black;
+
+  font-weight: 700;
+
+  transition: 0.3s ease;
+}
+
+.related-content button:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .related {
+    padding: 80px 20px;
+  }
+
+  .related-header h2 {
+    font-size: 32px;
+  }
+}

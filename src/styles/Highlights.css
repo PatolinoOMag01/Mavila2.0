@@ -1,0 +1,112 @@
+.highlights{
+    background:black;
+    color:white;
+    padding:120px 8%;
+}
+
+.highlights h1{
+    text-align:center;
+    font-size:55px;
+    letter-spacing:5px;
+    margin-bottom:80px;
+}
+
+.grid{
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+    grid-template-rows:350px 350px;
+
+    gap:30px;
+}
+
+.card{
+    border-radius:35px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+
+    transition:.5s;
+
+    background-size:cover;
+    background-position:center;
+}
+
+.card:hover{
+    transform:scale(1.02);
+}
+
+.card1{
+    grid-row:1/3;
+
+    background-image:url("/mv01-banner.jpg");
+}
+
+.card2{
+    background-image:url("/clothes-banner.jpg");
+}
+
+.card3{
+    background-image:url("/accessories-banner.jpg");
+}
+
+.overlay{
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        rgba(0,0,0,.1),
+        rgba(0,0,0,.8)
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:50px;
+}
+
+.overlay h2{
+    font-size:50px;
+}
+
+.overlay p{
+    color:#ddd;
+    margin-top:15px;
+}
+
+.overlay button{
+
+    margin-top:30px;
+
+    width:180px;
+    height:60px;
+
+    border:none;
+    border-radius:50px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+@media(max-width:1000px){
+
+.grid{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.card{
+
+    height:400px;
+
+}
+
+}

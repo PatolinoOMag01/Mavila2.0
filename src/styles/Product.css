@@ -1,0 +1,254 @@
+.product-page{
+
+    min-height:100vh;
+
+    background:black;
+
+    color:white;
+
+    display:flex;
+
+    padding:150px 8%;
+
+    gap:80px;
+
+}
+
+.gallery{
+
+    flex:1;
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+.thumbnails{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.thumbnails img{
+
+    width:100px;
+
+    background:#111;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+}
+
+.main-image{
+
+    flex:1;
+
+}
+
+.main-image img{
+
+    width:100%;
+
+}
+
+.product-info{
+
+    width:500px;
+
+}
+
+.product-info h1{
+
+    font-size:70px;
+
+}
+
+.subtitle{
+
+    color:#888;
+
+    font-size:25px;
+
+}
+
+.price{
+
+    margin-top:30px;
+
+    font-size:40px;
+
+    font-weight:bold;
+
+}
+
+.description{
+
+    margin-top:40px;
+
+    color:#999;
+
+    line-height:1.8;
+
+}
+
+.colors,
+.sizes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.colors button,
+.sizes button {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 12px;
+  border: 1px solid #333;
+
+  background: #151515;
+  color: white;
+
+  cursor: pointer;
+}
+
+.sizes button.selected {
+  background: white;
+  color: black;
+}
+
+.buttons{
+
+    margin-top:50px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.buy{
+
+    height:70px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.cart{
+
+    height:70px;
+
+    border:1px solid #333;
+
+    background:black;
+
+    color:white;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+}
+
+.rating{
+
+    margin-top:25px;
+
+    color:#FFD700;
+
+    font-size:22px;
+
+}
+
+.rating span{
+
+    margin-left:15px;
+
+    color:#999;
+
+    font-size:18px;
+
+}
+
+.features{
+
+    margin-top:50px;
+
+}
+
+.features ul{
+
+    margin-top:25px;
+
+    color:#999;
+
+    line-height:2.3;
+
+    list-style:none;
+
+}
+
+.selected{
+
+background:white !important;
+
+color:black !important;
+
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.thumb {
+  width: 80px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+}
+
+.thumb.active {
+  border-color: white;
+}
+
+.main-image {
+  flex: 1;
+  background: #151515;
+  border-radius: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image img {
+  width: 100%;
+  max-width: 700px;
+}

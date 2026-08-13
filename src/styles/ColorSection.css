@@ -1,0 +1,52 @@
+.colors-section{
+    background:#080808;
+    color:white;
+    padding:120px 8%;
+}
+
+.colors-section h1{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:80px;
+    letter-spacing:5px;
+}
+
+.colors-container{
+    display:flex;
+    gap:30px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+}
+
+.colors-container::-webkit-scrollbar{
+    height:8px;
+}
+
+.colors-container::-webkit-scrollbar-thumb{
+    background:#222;
+    border-radius:50px;
+}
+
+.color-card{
+    min-width:350px;
+    background:#111;
+    border-radius:30px;
+    padding:40px;
+    transition:.4s;
+    cursor:pointer;
+}
+
+.color-card:hover{
+    transform:translateY(-10px);
+}
+
+.color-card img{
+    width:100%;
+}
+
+.color-card h2{
+    margin-top:30px;
+    text-align:center;
+    letter-spacing:3px;
+    color:#ddd;
+}
