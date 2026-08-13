@@ -47,10 +47,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <img
-            src="/mv01.png"
-            alt="Tênis MV-01"
-          />
+          <img src={`${import.meta.env.BASE_URL}mv01-1.png`} />
         </motion.div>
 
       </div>
