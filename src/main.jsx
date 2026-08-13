@@ -1,21 +1,21 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+
 import { FavoritesProvider } from "./context/FavoritesContext";
+import { CartProvider } from "./context/CartContext";
 
 import App from "./App";
 import "./styles/index.css";
 
-import { CartProvider } from "./context/CartContext";
-
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/Mavila2.0">
+    <HashRouter>
       <CartProvider>
         <FavoritesProvider>
-        <App />
+          <App />
         </FavoritesProvider>
       </CartProvider>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
