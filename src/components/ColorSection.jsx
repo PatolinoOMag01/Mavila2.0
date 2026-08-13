@@ -2,29 +2,31 @@ import "../styles/ColorSection.css";
 
 export default function ColorSection() {
 
+  const base = import.meta.env.BASE_URL;
+
   const colors = [
     {
-      image: "/mv01.png",
+      image: `${base}mv01.png`,
       color: "PRETO / BRANCO"
     },
 
     {
-      image: "/mv01-white-black.png",
+      image: `${base}mv01-white-black.png`,
       color: "BRANCO / PRETO"
     },
 
     {
-      image: "/mv01-blue.png",
+      image: `${base}mv01-blue.png`,
       color: "PRETO / AZUL"
     },
 
     {
-      image: "/mv01-green.png",
+      image: `${base}mv01-green.png`,
       color: "PRETO / VERDE"
     },
 
     {
-      image: "/mv01-gray.png",
+      image: `${base}mv01-gray.png`,
       color: "CINZA / PRATA"
     }
   ];
