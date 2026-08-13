@@ -2,15 +2,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function ProductGallery() {
+  const base = import.meta.env.BASE_URL;
+
   const images = [
-    "/mv01-1.png",
-    "/mv01-2.png",
-    "/mv01-3.png",
-    "/mv01-4.png",
+    `${base}mv01-1.png`,
+    `${base}mv01-2.png`,
+    `${base}mv01-3.png`,
+    `${base}mv01-4.png`,
   ];
 
-  const [selectedImage, setSelectedImage] =
-    useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState(images[0]);
 
   return (
     <div className="gallery">
@@ -25,9 +26,7 @@ export default function ProductGallery() {
                 ? "thumb active"
                 : "thumb"
             }
-            onClick={() =>
-              setSelectedImage(image)
-            }
+            onClick={() => setSelectedImage(image)}
           />
         ))}
       </div>
