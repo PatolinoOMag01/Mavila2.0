@@ -10,7 +10,7 @@ import { CartProvider } from "./context/CartContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Mavila2.0">
       <CartProvider>
         <FavoritesProvider>
         <App />
