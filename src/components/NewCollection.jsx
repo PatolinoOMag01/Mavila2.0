@@ -13,12 +13,12 @@ export default function NewCollection() {
     {
       name: "MV-02",
       description: "Urban Motion",
-      image: `${base}mv01.png`,
+      image: `${base}mv02.png`,
     },
     {
       name: "MV-03",
       description: "Future Flow",
-      image: `${base}mv01.png`,
+      image: `${base}mv03.png`,
     },
   ];
 
