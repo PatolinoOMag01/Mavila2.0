@@ -28,7 +28,7 @@ export default function Experience() {
 
       <div className="experience-right">
 
-        <img src="/experience.jpg"/>
+        <img src={`${import.meta.env.BASE_URL}mv01.png`} />
 
       </div>
 
