@@ -29,7 +29,7 @@ export default function Discover() {
 
       <div className="discover-right">
 
-        <img src="/mv01.png" />
+        <img src={`${import.meta.env.BASE_URL}mv01.png`} />
 
       </div>
 
