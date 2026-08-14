@@ -7,17 +7,17 @@ export default function ColorSection() {
   const colors = [
     {
       image: `${base}mv01.png`,
-      color: "PRETO / BRANCO"
+      color: "PRETO CARBONO"
     },
 
     {
-      image: `${base}mv01-white-black.png`,
-      color: "BRANCO / PRETO"
+      image: `${base}mv02.png`,
+      color: "BRANCO / ROXO"
     },
 
     {
-      image: `${base}mv01-blue.png`,
-      color: "PRETO / AZUL"
+      image: `${base}mv03.png`,
+      color: "ALLUCARD"
     },
 
     {
