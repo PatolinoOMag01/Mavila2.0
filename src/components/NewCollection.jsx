@@ -3,21 +3,22 @@ import { motion } from "framer-motion";
 import "../styles/NewCollection.css";
 
 export default function NewCollection() {
+  const base = import.meta.env.BASE_URL;
   const products = [
     {
       name: "MV-01",
       description: "Street Luxury",
-      image: "/mv01.png",
+      image: `${base}mv01.png`,
     },
     {
       name: "MV-02",
       description: "Urban Motion",
-      image: "/mv02.png",
+      image: `${base}mv01.png`,
     },
     {
       name: "MV-03",
       description: "Future Flow",
-      image: "/mv03.png",
+      image: `${base}mv01.png`,
     },
   ];
 
