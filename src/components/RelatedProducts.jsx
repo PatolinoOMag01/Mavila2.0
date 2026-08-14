@@ -2,23 +2,24 @@ import { Link } from "react-router-dom";
 import "../styles/RelatedProducts.css";
 
 export default function RelatedProducts() {
+  const base = import.meta.env.BASE_URL;
   const products = [
     {
       name: "MV-02",
       price: "R$ 949,90",
-      image: "/mv02.png",
+      image: `${base}mv01.png`,
       link: "/mv01"
     },
     {
       name: "MV-03",
       price: "R$ 999,90",
-      image: "/mv03.png",
+      image: `${base}mv01.png`,
       link: "/mv01"
     },
     {
       name: "MV-04",
       price: "R$ 1.099,90",
-      image: "/mv04.png",
+      image: `${base}mv01.png`,
       link: "/mv01"
     }
   ];
