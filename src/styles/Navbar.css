@@ -202,3 +202,183 @@
     font-size: 17px;
   }
 }
+
+/* ========================================
+   MENU HAMBURGUER
+======================================== */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid #333;
+  border-radius: 50%;
+
+  background: #151515;
+
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 4px;
+
+  z-index: 10001;
+}
+
+.menu-toggle span {
+  width: 18px;
+  height: 2px;
+
+  background: white;
+
+  transition: 0.3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform:
+    translateY(6px)
+    rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform:
+    translateY(-6px)
+    rotate(-45deg);
+}
+
+
+/* MENU MOBILE */
+
+.mobile-menu {
+  position: fixed;
+
+  top: 0;
+  right: -100%;
+
+  width: min(320px, 85vw);
+  height: 100vh;
+
+  padding: 110px 30px 40px;
+
+  background: #0f0f0f;
+
+  border-left: 1px solid #222;
+
+  transition: 0.35s ease;
+
+  z-index: 10000;
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.mobile-menu nav a {
+  width: 100%;
+
+  padding: 18px 0;
+
+  color: white;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid #222;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  backdrop-filter: blur(3px);
+
+  z-index: 9999;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+
+    position: fixed;
+
+    top: 0;
+    right: -100%;
+
+    width: min(320px, 85vw);
+    height: 100vh;
+
+    padding: 110px 30px 40px;
+
+    background: #0f0f0f;
+
+    border-left: 1px solid #222;
+
+    transition: 0.35s ease;
+
+    z-index: 10000;
+  }
+
+  .mobile-menu.open {
+    right: 0;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(3px);
+
+    z-index: 9999;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+}
+
+/* ========================================
+   MENU MOBILE - ESCONDIDO NO DESKTOP
+======================================== */
+
+.menu-toggle,
+.mobile-menu,
+.mobile-menu-overlay {
+  display: none;
+}

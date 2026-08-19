@@ -1,112 +1,255 @@
-.highlights{
-    background:black;
-    color:white;
-    padding:120px 8%;
+.highlights {
+  background: #000;
+  color: white;
+
+  padding: 120px 8%;
 }
 
-.highlights h1{
-    text-align:center;
-    font-size:55px;
-    letter-spacing:5px;
-    margin-bottom:80px;
+/* HEADER */
+
+.highlights-header {
+  text-align: center;
+
+  margin-bottom: 70px;
 }
 
-.grid{
-    display:grid;
+.highlights-header span {
+  color: #777;
 
-    grid-template-columns:2fr 1fr;
-    grid-template-rows:350px 350px;
-
-    gap:30px;
+  font-size: 12px;
+  letter-spacing: 4px;
 }
 
-.card{
-    border-radius:35px;
-    overflow:hidden;
-    position:relative;
-    cursor:pointer;
+.highlights-header h1 {
+  margin-top: 15px;
 
-    transition:.5s;
-
-    background-size:cover;
-    background-position:center;
+  font-size: 55px;
+  letter-spacing: 5px;
 }
 
-.card:hover{
-    transform:scale(1.02);
+/* GRID */
+
+.highlights-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 350px 350px;
+
+  gap: 30px;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
 }
 
-.card1{
-    grid-row:1/3;
+/* CARD */
 
-    background-image:url("/mv01-banner.jpg");
+.highlights .card {
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid #181818;
+  border-radius: 35px;
+
+  background-size: cover;
+  background-position: center;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease;
 }
 
-.card2{
-    background-image:url("/clothes-banner.jpg");
+.highlights .card:hover {
+  transform: scale(1.02);
+
+  border-color: #333;
 }
 
-.card3{
-    background-image:url("/accessories-banner.jpg");
+.card1 {
+  grid-row: 1 / 3;
 }
 
-.overlay{
+/* OVERLAY */
 
-    width:100%;
-    height:100%;
+.highlight-overlay {
+  width: 100%;
+  height: 100%;
 
-    background:linear-gradient(
-        rgba(0,0,0,.1),
-        rgba(0,0,0,.8)
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 50px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.1) 65%
     );
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-end;
-
-    padding:50px;
 }
 
-.overlay h2{
-    font-size:50px;
+.highlight-overlay h2 {
+  font-size: 50px;
+  line-height: 1;
 }
 
-.overlay p{
-    color:#ddd;
-    margin-top:15px;
+.highlight-overlay p {
+  margin-top: 12px;
+
+  color: #ccc;
+
+  font-size: 16px;
 }
 
-.overlay button{
+/* BOTÃO */
 
-    margin-top:30px;
+.highlight-button {
+  width: 180px;
+  height: 56px;
 
-    width:180px;
-    height:60px;
+  margin-top: 28px;
 
-    border:none;
-    border-radius:50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-    font-size:16px;
-    font-weight:bold;
+  border-radius: 999px;
 
-    cursor:pointer;
+  background: white;
+  color: black;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
 }
 
-@media(max-width:1000px){
-
-.grid{
-
-    display:flex;
-    flex-direction:column;
-
+.highlight-button:hover {
+  transform: translateY(-3px);
 }
 
-.card{
+/* TABLET */
 
-    height:400px;
+@media (max-width: 1000px) {
+  .highlights {
+    padding: 90px 30px;
+  }
 
+  .highlights-header h1 {
+    font-size: 45px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 460px 320px;
+  }
+
+  .card1 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .highlight-overlay {
+    padding: 35px;
+  }
 }
 
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .highlights {
+    padding: 75px 16px;
+  }
+
+  .highlights-header {
+    margin-bottom: 35px;
+  }
+
+  .highlights-header span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  .highlights-header h1 {
+    margin-top: 12px;
+
+    font-size: 32px;
+    line-height: 1;
+
+    letter-spacing: 3px;
+  }
+
+  .highlights-grid {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .highlights .card {
+    width: 100%;
+    height: 360px;
+
+    border-radius: 22px;
+  }
+
+  .highlights .card:hover {
+    transform: none;
+  }
+
+  .highlight-overlay {
+    padding: 25px;
+  }
+
+  .highlight-overlay h2 {
+    font-size: 36px;
+  }
+
+  .highlight-overlay p {
+    font-size: 14px;
+  }
+
+  .highlight-button {
+    width: 160px;
+    height: 52px;
+
+    margin-top: 22px;
+  }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 420px) {
+  .highlights {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .highlights-header h1 {
+    font-size: 28px;
+  }
+
+  .highlights .card {
+    height: 320px;
+  }
+
+  .highlight-overlay {
+    padding: 22px;
+  }
+
+  .highlight-overlay h2 {
+    font-size: 32px;
+  }
+
+  .highlight-button {
+    width: 100%;
+    max-width: 220px;
+  }
 }

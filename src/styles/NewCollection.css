@@ -1,42 +1,63 @@
 .collection {
   padding: 120px 60px;
+
   background: #0f0f0f;
 }
 
 .collection-header {
   text-align: center;
+
   margin-bottom: 70px;
 }
 
 .collection-header span {
   color: #888;
+
   letter-spacing: 3px;
+
   font-size: 13px;
 }
 
 .collection-header h1 {
   color: white;
+
   font-size: 56px;
+
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
 .collection-header p {
   color: #bcbcbc;
+
   max-width: 600px;
+
   margin: auto;
+
+  line-height: 1.6;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   gap: 30px;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
 }
 
 .card {
+  min-width: 0;
+
   background: #171717;
+
   border: 1px solid #222;
   border-radius: 24px;
+
   overflow: hidden;
 
   transition: 0.35s ease;
@@ -44,10 +65,12 @@
 
 .card:hover {
   transform: translateY(-10px);
+
   border-color: #444;
 
   box-shadow:
-    0 20px 50px rgba(0,0,0,0.35);
+    0 20px 50px
+    rgba(0, 0, 0, 0.35);
 }
 
 .image-wrapper {
@@ -57,16 +80,23 @@
   align-items: center;
   justify-content: center;
 
+  padding: 20px;
+
   background:
     radial-gradient(
       circle,
-      rgba(255,255,255,0.05),
+      rgba(255, 255, 255, 0.05),
       transparent
     );
 }
 
 .image-wrapper img {
   width: 80%;
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
   transition: 0.4s ease;
 }
 
@@ -80,12 +110,18 @@
 
 .card-content h2 {
   color: white;
+
   margin-bottom: 10px;
 }
 
 .card-content p {
   color: #a0a0a0;
+
   margin-bottom: 20px;
+}
+
+.card-content a {
+  text-decoration: none;
 }
 
 .card-content button {
@@ -101,6 +137,8 @@
 
   font-weight: 700;
 
+  cursor: pointer;
+
   transition: 0.3s ease;
 }
 
@@ -108,12 +146,121 @@
   transform: scale(1.02);
 }
 
-@media (max-width: 768px) {
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
   .collection {
-    padding: 80px 20px;
+    padding: 90px 30px;
+  }
+
+  .cards {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .collection-header {
+    margin-bottom: 50px;
   }
 
   .collection-header h1 {
-    font-size: 40px;
+    font-size: 48px;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+  .collection {
+    padding: 75px 16px;
+  }
+
+  .collection-header {
+    margin-bottom: 35px;
+  }
+
+  .collection-header span {
+    font-size: 11px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .collection-header h1 {
+    font-size: 36px;
+
+    line-height: 1;
+
+    margin-top: 12px;
+  }
+
+  .collection-header p {
+    max-width: 320px;
+
+    font-size: 14px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .card {
+    border-radius: 20px;
+  }
+
+  .image-wrapper {
+    height: 240px;
+
+    padding: 15px;
+  }
+
+  .image-wrapper img {
+    width: 88%;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h2 {
+    font-size: 24px;
+  }
+
+  .card-content p {
+    font-size: 14px;
+  }
+
+  .card-content button {
+    min-height: 50px;
+  }
+}
+
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 400px) {
+  .collection {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .collection-header h1 {
+    font-size: 32px;
+  }
+
+  .image-wrapper {
+    height: 210px;
+  }
+
+  .card-content {
+    padding: 18px;
   }
 }

@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout";
 import MVClub from "./pages/MVClub";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
+import OrderConfirmed from "./pages/OrderConfirmed";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/club" element={<MVClub />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/pedido-confirmado" element={<OrderConfirmed />} />
       </Routes>
     </>
   );

@@ -1,90 +1,223 @@
-.discover{
-    min-height:100vh;
-    background:#050505;
-    color:white;
+.discover {
+  min-height: 100vh;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  background: #050505;
+  color: white;
 
-    padding:0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 70px;
+
+  padding: 100px 8%;
 }
 
-.discover-left{
-    flex:1;
+.discover-left {
+  flex: 1;
+
+  min-width: 0;
 }
 
-.discover-left h1{
-    font-size:120px;
-    letter-spacing:10px;
+.discover-tag {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  color: #777;
+
+  font-size: 12px;
+  letter-spacing: 4px;
 }
 
-.discover-left h2{
-    margin-top:20px;
-    font-size:55px;
-    line-height:1.2;
+.discover-left h1 {
+  font-size: clamp(72px, 8vw, 120px);
+
+  line-height: 0.9;
+
+  letter-spacing: 8px;
 }
 
-.discover-left p{
-    margin-top:40px;
-    color:#999;
-    font-size:20px;
-    line-height:1.8;
-    max-width:500px;
+.discover-left h2 {
+  margin-top: 25px;
+
+  font-size: clamp(38px, 4vw, 55px);
+  line-height: 1.1;
 }
 
-.discover button{
-    margin-top:50px;
+.discover-left p {
+  max-width: 500px;
 
-    width:220px;
-    height:70px;
+  margin-top: 35px;
 
-    border:none;
-    border-radius:60px;
+  color: #999;
 
-    background:white;
-    color:black;
-
-    font-size:18px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
+  font-size: 18px;
+  line-height: 1.8;
 }
 
-.discover button:hover{
-    transform:scale(1.05);
+.discover-button {
+  width: 220px;
+  height: 64px;
+
+  margin-top: 45px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  background: white;
+  color: black;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition: 0.3s ease;
 }
 
-.discover-right{
-    flex:1;
-    display:flex;
-    justify-content:center;
+.discover-button:hover {
+  transform: translateY(-3px);
 }
 
-.discover-right img{
-    width:900px;
-    filter:drop-shadow(0 0 50px rgba(255,255,255,.1));
+.discover-right {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media(max-width:1100px){
+.discover-right img {
+  width: min(100%, 760px);
 
-.discover{
-    flex-direction:column;
-    text-align:center;
+  display: block;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 0 50px
+      rgba(255, 255, 255, 0.1)
+    );
 }
 
-.discover-left h1{
-    font-size:80px;
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .discover {
+    flex-direction: column;
+
+    min-height: auto;
+
+    gap: 45px;
+
+    padding: 90px 30px;
+
+    text-align: center;
+  }
+
+  .discover-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .discover-left p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .discover-right img {
+    width: min(90vw, 650px);
+  }
 }
 
-.discover-left h2{
-    font-size:40px;
+/* MOBILE */
+
+@media (max-width: 700px) {
+  .discover {
+    gap: 35px;
+
+    padding:
+      75px
+      18px;
+  }
+
+  .discover-tag {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  .discover-left h1 {
+    font-size: 64px;
+
+    letter-spacing: 5px;
+  }
+
+  .discover-left h2 {
+    margin-top: 18px;
+
+    font-size: 34px;
+  }
+
+  .discover-left p {
+    max-width: 330px;
+
+    margin-top: 25px;
+
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .discover-button {
+    width: 100%;
+    max-width: 300px;
+
+    height: 56px;
+
+    margin-top: 32px;
+  }
+
+  .discover-right {
+    width: 100%;
+  }
+
+  .discover-right img {
+    width: min(100%, 430px);
+  }
 }
 
-.discover-right img{
-    width:100%;
-}
+/* CELULARES PEQUENOS */
 
+@media (max-width: 420px) {
+  .discover {
+    padding:
+      65px
+      16px;
+  }
+
+  .discover-left h1 {
+    font-size: 54px;
+
+    letter-spacing: 4px;
+  }
+
+  .discover-left h2 {
+    font-size: 29px;
+  }
+
+  .discover-left p {
+    font-size: 14px;
+  }
+
+  .discover-right img {
+    width: 100%;
+  }
 }

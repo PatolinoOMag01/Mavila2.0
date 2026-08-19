@@ -1,3 +1,4 @@
+import "../styles/CartDrawer.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
@@ -8,11 +9,21 @@ export default function CartDrawer({
 }) {
   const {
     cart,
-    removeFromCart
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
   } = useContext(CartContext);
 
+  const totalItems = cart.reduce(
+    (sum, item) =>
+      sum + (item.quantity || 1),
+    0
+  );
+
   const total = cart.reduce(
-    (sum, item) => sum + item.price,
+    (sum, item) =>
+      sum +
+      item.price * (item.quantity || 1),
     0
   );
 
@@ -31,65 +42,167 @@ export default function CartDrawer({
         }`}
       >
         <div className="drawer-header">
-          <h2>🛒 Carrinho</h2>
+          <div>
+            <h2>Seu carrinho</h2>
 
-          <button onClick={onClose}>
+            <span className="drawer-count">
+              {totalItems}{" "}
+              {totalItems === 1
+                ? "item"
+                : "itens"}
+            </span>
+          </div>
+
+          <button
+            onClick={onClose}
+            aria-label="Fechar carrinho"
+          >
             ✕
           </button>
         </div>
 
         <div className="drawer-items">
           {cart.length === 0 ? (
-            <p>Seu carrinho está vazio.</p>
-          ) : (
-            cart.map((item, index) => (
-              <div
-                className="drawer-item"
-                key={index}
+            <div className="empty-cart">
+              <span>🛒</span>
+
+              <h3>Seu carrinho está vazio</h3>
+
+              <p>
+                Escolha seu próximo MV e ele
+                aparecerá aqui.
+              </p>
+
+              <Link
+                to="/mv01"
+                onClick={onClose}
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                />
+                Ver MV-01
+              </Link>
+            </div>
+          ) : (
+            cart.map((item, index) => {
+              const quantity =
+                item.quantity || 1;
 
-                <div>
-                  <h4>{item.name}</h4>
+              const subtotal =
+                item.price * quantity;
 
-                  <p>
-                    R$ {item.price.toFixed(2)}
-                  </p>
-
-                  <small>
-                    Tam. {item.size}
-                  </small>
-                </div>
-
-                <button
-                  onClick={() =>
-                    removeFromCart(index)
-                  }
+              return (
+                <div
+                  className="drawer-item"
+                  key={`${item.name}-${item.color}-${item.size}-${index}`}
                 >
-                  ✕
-                </button>
-              </div>
-            ))
+                  <div className="drawer-item-image">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                    />
+                  </div>
+
+                  <div className="drawer-item-info">
+                    <div className="drawer-item-top">
+                      <div>
+                        <h4>{item.name}</h4>
+
+                        {item.color && (
+                          <span>
+                            {item.color}
+                          </span>
+                        )}
+
+                        {item.size && (
+                          <span>
+                            Tamanho {item.size}
+                          </span>
+                        )}
+                      </div>
+
+                      <button
+                        className="remove-item"
+                        onClick={() =>
+                          removeFromCart(index)
+                        }
+                        aria-label="Remover produto"
+                      >
+                        ✕
+                      </button>
+                    </div>
+
+                    <div className="drawer-item-bottom">
+                      <div className="quantity-control">
+                        <button
+                          onClick={() =>
+                            decreaseQuantity(index)
+                          }
+                          aria-label="Diminuir quantidade"
+                        >
+                          −
+                        </button>
+
+                        <span>
+                          {quantity}
+                        </span>
+
+                        <button
+                          onClick={() =>
+                            increaseQuantity(index)
+                          }
+                          aria-label="Aumentar quantidade"
+                        >
+                          +
+                        </button>
+                      </div>
+
+                      <strong>
+                        R${" "}
+                        {subtotal.toLocaleString(
+                          "pt-BR",
+                          {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          }
+                        )}
+                      </strong>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
           )}
         </div>
 
-        <div className="drawer-footer">
-          <h3>
-            Total: R$ {total.toFixed(2)}
-          </h3>
+        {cart.length > 0 && (
+          <div className="drawer-footer">
+            <div className="drawer-total">
+              <span>Total</span>
 
-          <Link
-            to="/checkout"
-            onClick={onClose}
-          >
-            <button className="checkout-btn">
+              <strong>
+                R${" "}
+                {total.toLocaleString(
+                  "pt-BR",
+                  {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }
+                )}
+              </strong>
+            </div>
+
+            <p>
+              Frete e descontos calculados no
+              checkout.
+            </p>
+
+            <Link
+              to="/checkout"
+              onClick={onClose}
+              className="checkout-link"
+            >
               Finalizar Compra
-            </button>
-          </Link>
-        </div>
+            </Link>
+          </div>
+        )}
       </aside>
     </>
   );

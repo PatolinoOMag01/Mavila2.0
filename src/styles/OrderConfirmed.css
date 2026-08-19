@@ -1,0 +1,210 @@
+.order-confirmed-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 20px 60px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.06),
+      transparent 35%
+    ),
+    #080808;
+
+  color: white;
+}
+
+.order-confirmed-card {
+  width: 100%;
+  max-width: 700px;
+
+  padding: 60px;
+
+  text-align: center;
+
+  background: #101010;
+
+  border: 1px solid #202020;
+  border-radius: 32px;
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.45);
+}
+
+.success-icon {
+  width: 90px;
+  height: 90px;
+
+  margin:
+    0
+    auto
+    30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+  color: black;
+
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.order-tag {
+  color: #777;
+
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+.order-confirmed-card h1 {
+  margin: 15px 0 18px;
+
+  font-size: clamp(
+    38px,
+    6vw,
+    64px
+  );
+
+  line-height: 1;
+}
+
+.order-confirmed-card > p {
+  max-width: 520px;
+
+  margin:
+    0
+    auto
+    40px;
+
+  color: #999;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.order-info {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 40px;
+}
+
+.order-info div {
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  background: #151515;
+
+  border: 1px solid #222;
+  border-radius: 18px;
+}
+
+.order-info span {
+  color: #777;
+
+  font-size: 12px;
+}
+
+.order-info strong {
+  font-size: 14px;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.primary-action,
+.secondary-action {
+  min-width: 190px;
+
+  padding: 15px 25px;
+
+  border-radius: 999px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.primary-action {
+  background: white;
+  color: black;
+}
+
+.secondary-action {
+  border: 1px solid #333;
+
+  color: white;
+}
+
+.primary-action:hover,
+.secondary-action:hover {
+  transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .order-confirmed-page {
+    padding:
+      100px
+      16px
+      40px;
+  }
+
+  .order-confirmed-card {
+    padding:
+      40px
+      20px;
+
+    border-radius: 24px;
+  }
+
+  .success-icon {
+    width: 75px;
+    height: 75px;
+
+    font-size: 34px;
+  }
+
+  .order-confirmed-card h1 {
+    font-size: 38px;
+  }
+
+  .order-info {
+    grid-template-columns: 1fr;
+  }
+
+  .order-actions {
+    flex-direction: column;
+  }
+
+  .primary-action,
+  .secondary-action {
+    width: 100%;
+  }
+
+}

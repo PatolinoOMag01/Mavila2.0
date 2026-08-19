@@ -1,129 +1,224 @@
 .colors-section {
-    background: #080808;
-    color: white;
-    padding: 80px 8%;
+  background: #080808;
+  color: white;
+
+  padding: 80px 8%;
 }
 
 .colors-section h1 {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 50px;
-    letter-spacing: 5px;
+  text-align: center;
+
+  font-size: 42px;
+  letter-spacing: 5px;
+
+  margin-bottom: 50px;
 }
 
-/* CARROSSEL */
+/* ========================================
+   CARROSSEL
+======================================== */
 
 .colors-container {
-    display: flex;
-    gap: 25px;
+  display: flex;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+  gap: 25px;
 
-    scroll-behavior: smooth;
+  overflow-x: auto;
+  overflow-y: hidden;
 
-    scrollbar-width: none;
-    padding-bottom: 10px;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  padding-bottom: 10px;
 }
 
 .colors-container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-/* CARD */
+/* ========================================
+   CARD
+======================================== */
 
 .color-card {
-    flex: 0 0 300px;
+  flex: 0 0 300px;
 
-    text-decoration: none;
+  padding: 25px;
 
-    color: inherit;
+  background: #111;
 
-    background: #111;
+  border: 1px solid #1d1d1d;
+  border-radius: 25px;
 
-    border-radius: 25px;
+  color: inherit;
 
-    padding: 25px;
+  text-decoration: none;
 
-    transition: transform .4s ease;
+  cursor: pointer;
 
-    cursor: pointer;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
 }
 
 .color-card:hover {
-    transform: translateY(-8px);
+  transform: translateY(-8px);
+
+  border-color: #3a3a3a;
+
+  background: #151515;
 }
 
-/* IMAGEM */
+/* ========================================
+   IMAGEM
+======================================== */
 
 .color-card img {
-    width: 100%;
-    height: 250px;
+  width: 100%;
+  height: 250px;
 
-    object-fit: contain;
+  display: block;
 
-    display: block;
+  object-fit: contain;
 }
 
-/* NOME DA COR */
+/* ========================================
+   NOME
+======================================== */
 
 .color-card h2 {
-    margin-top: 20px;
+  margin-top: 20px;
 
-    text-align: center;
+  color: #ddd;
 
-    font-size: 17px;
+  text-align: center;
 
-    letter-spacing: 2px;
-
-    color: #ddd;
+  font-size: 17px;
+  letter-spacing: 2px;
 }
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .colors-section {
+    padding: 70px 30px;
+  }
+
+  .colors-section h1 {
+    font-size: 34px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 40px;
+  }
+
+  .color-card {
+    flex-basis: 280px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
 
 @media (max-width: 768px) {
-    .colors-section {
-        padding: 60px 20px;
-    }
+  .colors-section {
+    padding: 65px 0;
+  }
 
-    .colors-section h1 {
-        font-size: 28px;
-        letter-spacing: 3px;
-        margin-bottom: 35px;
-    }
+  .colors-section h1 {
+    padding: 0 20px;
 
-    .colors-container {
-        gap: 16px;
-        scroll-snap-type: x mandatory;
-    }
+    font-size: 28px;
+    line-height: 1.1;
 
-    .color-card {
-        flex: 0 0 82%;
-        padding: 18px;
-        border-radius: 20px;
-        scroll-snap-align: center;
-        text-decoration: none;
-        color: inherit;
-    }
+    letter-spacing: 3px;
 
-    .color-card img {
-        height: 210px;
-    }
+    margin-bottom: 35px;
+  }
 
-    .color-card h2 {
-        font-size: 15px;
-        margin-top: 15px;
-    }
+  .colors-container {
+    gap: 14px;
+
+    padding:
+      0
+      20px
+      12px;
+
+    scroll-snap-type: x mandatory;
+
+    overscroll-behavior-x: contain;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .color-card {
+    flex: 0 0 82%;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    scroll-snap-align: center;
+  }
+
+  .color-card:hover {
+    transform: none;
+  }
+
+  .color-card img {
+    height: 210px;
+  }
+
+  .color-card h2 {
+    margin-top: 15px;
+
+    font-size: 15px;
+
+    letter-spacing: 1.8px;
+  }
 }
 
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
 @media (max-width: 480px) {
-    .colors-section h1 {
-        font-size: 23px;
-    }
+  .colors-section {
+    padding-top: 55px;
+    padding-bottom: 55px;
+  }
 
-    .color-card {
-        flex: 0 0 88%;
-    }
+  .colors-section h1 {
+    font-size: 23px;
 
-    .color-card img {
-        height: 180px;
-    }
+    letter-spacing: 2.5px;
+
+    margin-bottom: 28px;
+  }
+
+  .colors-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .color-card {
+    flex: 0 0 88%;
+
+    padding: 16px;
+
+    border-radius: 18px;
+  }
+
+  .color-card img {
+    height: 180px;
+  }
+
+  .color-card h2 {
+    font-size: 14px;
+  }
 }
