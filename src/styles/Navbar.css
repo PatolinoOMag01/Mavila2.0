@@ -1,0 +1,204 @@
+/* ========================================
+   NAVBAR - MAVILA
+======================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 22px 50px;
+
+  z-index: 9999;
+
+  transition: all 0.35s ease;
+}
+
+.navbar-scrolled {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  padding: 16px 50px;
+}
+
+.navbar-logo a {
+  color: white;
+
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 4px;
+
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+
+  gap: 35px;
+}
+
+.navbar-links a {
+  position: relative;
+
+  color: #c5c5c5;
+
+  font-size: 15px;
+
+  text-decoration: none;
+
+  transition: 0.25s;
+}
+
+.navbar-links a:hover {
+  color: white;
+}
+
+.navbar-links a::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 2px;
+
+  background: white;
+
+  transition: 0.3s;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: white;
+  color: black;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.cart-icon {
+  position: relative;
+
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid #333;
+  border-radius: 50%;
+
+  background: #151515;
+  color: white;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+
+  top: -5px;
+  right: -5px;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: white;
+  color: black;
+
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ========================================
+   NAVBAR - MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+  .navbar,
+  .navbar-scrolled {
+    min-height: 68px;
+
+    padding: 14px 18px;
+
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(18px);
+  }
+
+  .navbar-logo a {
+    font-size: 19px;
+    letter-spacing: 3px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .cart-icon {
+    width: 42px;
+    height: 42px;
+
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar,
+  .navbar-scrolled {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .navbar-logo a {
+    font-size: 17px;
+  }
+}

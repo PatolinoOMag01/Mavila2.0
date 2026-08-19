@@ -35,6 +35,10 @@
 .color-card {
     flex: 0 0 300px;
 
+    text-decoration: none;
+
+    color: inherit;
+
     background: #111;
 
     border-radius: 25px;
@@ -73,4 +77,53 @@
     letter-spacing: 2px;
 
     color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .colors-section {
+        padding: 60px 20px;
+    }
+
+    .colors-section h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+        margin-bottom: 35px;
+    }
+
+    .colors-container {
+        gap: 16px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .color-card {
+        flex: 0 0 82%;
+        padding: 18px;
+        border-radius: 20px;
+        scroll-snap-align: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .color-card img {
+        height: 210px;
+    }
+
+    .color-card h2 {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .colors-section h1 {
+        font-size: 23px;
+    }
+
+    .color-card {
+        flex: 0 0 88%;
+    }
+
+    .color-card img {
+        height: 180px;
+    }
 }

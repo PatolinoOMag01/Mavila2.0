@@ -1,3 +1,4 @@
+import "../styles/Hero.css";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 

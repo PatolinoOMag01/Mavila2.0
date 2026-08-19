@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/ColorSection.css";
 
 export default function ColorSection() {
@@ -7,37 +8,40 @@ export default function ColorSection() {
   const colors = [
     {
       image: `${base}mv01.png`,
-      color: "PRETO CARBONO"
+      color: "PRETO CARBONO",
+      slug: "preto"
     },
 
     {
       image: `${base}mv02.png`,
-      color: "BRANCO / ROXO"
+      color: "SAPHIRE",
+      slug: "saphire"
     },
 
     {
       image: `${base}mv03.png`,
-      color: "ALLUCARD"
+      color: "ALLUCARD",
+      slug: "allucard"
     },
 
     {
-      image: `${base}mv01-green.png`,
-      color: "PRETO / VERDE"
+      image: `${base}mv04.png`,
+      color: "MUSGO",
+      slug: "musgo"
     },
 
     {
-      image: `${base}mv01-gray.png`,
-      color: "CINZA / PRATA"
+      image: `${base}mv05.png`,
+      color: "SILVER",
+      slug: "silver"
     }
   ];
 
   const handleWheel = (e) => {
     const container = e.currentTarget;
 
-    // Impede a página de rolar
     e.preventDefault();
 
-    // Rola o carrossel horizontalmente
     container.scrollLeft += e.deltaY;
   };
 
@@ -53,7 +57,8 @@ export default function ColorSection() {
 
         {colors.map((item, index) => (
 
-          <div
+          <Link
+            to={`/mv01?cor=${item.slug}`}
             className="color-card"
             key={index}
           >
@@ -65,7 +70,7 @@ export default function ColorSection() {
 
             <h2>{item.color}</h2>
 
-          </div>
+          </Link>
 
         ))}
 

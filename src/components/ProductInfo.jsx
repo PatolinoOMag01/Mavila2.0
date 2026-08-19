@@ -1,14 +1,73 @@
 import { useState, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../context/FavoritesContext";
 
 export default function ProductInfo() {
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const colorMap = {
+    preto: "Preto Carbono",
+    saphire: "Saphire",
+    allucard: "Allucard",
+    musgo: "Musgo",
+    silver: "Silver"
+  };
+
+  const imageMap = {
+    "Preto Carbono": `${import.meta.env.BASE_URL}mv01.png`,
+    "Saphire": `${import.meta.env.BASE_URL}mv02.png`,
+    "Allucard": `${import.meta.env.BASE_URL}mv03.png`,
+    "Musgo": `${import.meta.env.BASE_URL}mv04.png`,
+    "Silver": `${import.meta.env.BASE_URL}mv05.png`
+  };
+
+  const urlColor = searchParams.get("cor");
+
+  const initialColor =
+    colorMap[urlColor] || "Preto Carbono";
+
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("Preto/Branco");
+  const [selectedColor, setSelectedColor] = useState(initialColor);
 
   const { addToCart } = useContext(CartContext);
   const { addFavorite } = useContext(FavoritesContext);
+
+  function handleBuyNow() {
+    if (!selectedSize) {
+      alert("Selecione um tamanho.");
+      return;
+    }
+
+    addToCart({
+      name: "MV-01",
+      price: 899.90,
+      image: imageMap[selectedColor],
+      size: selectedSize,
+      color: selectedColor
+    });
+
+    navigate("/checkout");
+  }
+
+  function handleColorChange(color) {
+    setSelectedColor(color);
+
+    const slugMap = {
+      "Preto Carbono": "preto",
+      "Saphire": "saphire",
+      "Allucard": "allucard",
+      "Musgo": "musgo",
+      "Silver": "silver"
+    };
+
+    setSearchParams({
+      cor: slugMap[color]
+    });
+  }
 
   function handleAddToCart() {
 
@@ -20,7 +79,7 @@ export default function ProductInfo() {
     addToCart({
       name: "MV-01",
       price: 899.90,
-      image: "/mv01.png",
+      image: imageMap[selectedColor],
       size: selectedSize,
       color: selectedColor
     });
@@ -32,7 +91,8 @@ export default function ProductInfo() {
 
     addFavorite({
       name: "MV-01",
-      image: "/mv01.png"
+      image: imageMap[selectedColor],
+      color: selectedColor
     });
 
     alert("Produto adicionado aos favoritos!");
@@ -49,10 +109,11 @@ export default function ProductInfo() {
       </span>
 
       <div className="rating">
-          ⭐⭐⭐⭐⭐
-           <span>
-               4.9 • 327 avaliações verificadas
-           </span>
+        ⭐⭐⭐⭐⭐
+
+        <span>
+          4.9 • 327 avaliações verificadas
+        </span>
       </div>
 
       <div className="price">
@@ -83,12 +144,18 @@ export default function ProductInfo() {
 
       <div className="colors">
 
-        {["Preto/Branco", "Preto/Azul", "Cinza/Prata"].map((color) => (
+        {[
+          "Preto Carbono",
+          "Saphire",
+          "Allucard",
+          "Musgo",
+          "Silver"
+        ].map((color) => (
 
           <button
             key={color}
             className={selectedColor === color ? "selected" : ""}
-            onClick={() => setSelectedColor(color)}
+            onClick={() => handleColorChange(color)}
           >
             {color}
           </button>
@@ -117,7 +184,10 @@ export default function ProductInfo() {
 
       <div className="buttons">
 
-        <button className="buy">
+        <button
+          className="buy"
+          onClick={handleBuyNow}
+        >
           Comprar Agora
         </button>
 
