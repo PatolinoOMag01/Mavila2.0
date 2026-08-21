@@ -13,21 +13,22 @@ import {
 import { CartContext } from "../context/CartContext";
 import { FavoritesContext } from "../context/FavoritesContext";
 
-import {
-  MV01,
-  MV01_VARIANTS,
-  getVariantBySlug,
-} from "../data/catalog";
-
-export default function ProductInfo() {
+export default function ProductInfo({
+  product,
+}) {
   const [searchParams, setSearchParams] =
     useSearchParams();
 
   const navigate = useNavigate();
 
-  const variant = getVariantBySlug(
-    searchParams.get("cor")
-  );
+  const selectedSlug =
+    searchParams.get("cor");
+
+  const variant =
+    product.variants.find(
+      (item) =>
+        item.slug === selectedSlug
+    ) || product.variants[0];
 
   const [selectedSize, setSelectedSize] =
     useState("");
@@ -59,7 +60,7 @@ export default function ProductInfo() {
     );
 
     const item = {
-      name: MV01.name,
+      name: product.name,
       color: variant.color,
       image: `${import.meta.env.BASE_URL}${variant.image}`,
       link: `/mv01?cor=${variant.slug}`,
@@ -68,7 +69,8 @@ export default function ProductInfo() {
     const next = [
       item,
       ...viewed.filter(
-        (v) => v.link !== item.link
+        (viewedItem) =>
+          viewedItem.link !== item.link
       ),
     ].slice(0, 5);
 
@@ -77,35 +79,40 @@ export default function ProductInfo() {
       JSON.stringify(next)
     );
   }, [
+    product.name,
     variant.slug,
     variant.color,
     variant.image,
   ]);
 
-  const isFavorite = favorites.some(
-    (item) =>
-      item.name === MV01.name &&
-      item.color === variant.color
-  );
+  const isFavorite =
+    favorites.some(
+      (item) =>
+        item.name === product.name &&
+        item.color === variant.color
+    );
 
-  const stock = variant.stock;
+  const stock =
+    variant.stock || {};
 
   const remaining = selectedSize
     ? stock[selectedSize] || 0
     : null;
 
-  const availableSizes = useMemo(
-    () =>
-      Object.keys(stock).filter(
-        (size) => stock[size] > 0
-      ),
-    [stock]
-  );
+  const availableSizes =
+    useMemo(
+      () =>
+        Object.keys(stock).filter(
+          (size) =>
+            stock[size] > 0
+        ),
+      [stock]
+    );
 
   function productPayload() {
     return {
-      name: MV01.name,
-      price: MV01.price,
+      name: product.name,
+      price: product.price,
       image: `${import.meta.env.BASE_URL}${variant.image}`,
       size: selectedSize,
       color: variant.color,
@@ -129,7 +136,9 @@ export default function ProductInfo() {
       return;
     }
 
-    addToCart(productPayload());
+    addToCart(
+      productPayload()
+    );
 
     navigate("/checkout");
   }
@@ -139,7 +148,9 @@ export default function ProductInfo() {
       return;
     }
 
-    addToCart(productPayload());
+    addToCart(
+      productPayload()
+    );
 
     toast.success(
       "Produto adicionado ao carrinho!"
@@ -149,7 +160,7 @@ export default function ProductInfo() {
   function handleFavorite() {
     if (isFavorite) {
       removeFavorite(
-        MV01.name,
+        product.name,
         variant.color
       );
 
@@ -161,8 +172,8 @@ export default function ProductInfo() {
     }
 
     addFavorite({
-      name: MV01.name,
-      price: MV01.price,
+      name: product.name,
+      price: product.price,
       image: `${import.meta.env.BASE_URL}${variant.image}`,
       color: variant.color,
     });
@@ -201,14 +212,17 @@ export default function ProductInfo() {
         MAVILA / STREET LUXURY
       </span>
 
-      <h1>{MV01.name}</h1>
+      <h1>
+        {product.name}
+      </h1>
 
       <span className="subtitle">
-        {MV01.subtitle}
+        {product.subtitle}
       </span>
 
       <div className="rating">
         ★★★★★
+
         <span>
           4.9 • avaliações verificadas
         </span>
@@ -216,24 +230,25 @@ export default function ProductInfo() {
 
       <div className="price">
         R${" "}
-        {MV01.price.toLocaleString(
+        {Number(
+          product.price
+        ).toLocaleString(
           "pt-BR",
           {
             minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
           }
         )}
       </div>
 
       <p className="description">
-        O MV-01 combina performance e
-        luxo em uma silhueta exclusiva da
-        Mavila. Desenvolvido para quem
-        busca conforto, identidade e
-        presença.
+        {product.description}
       </p>
 
       <div className="features">
-        <h3>Características</h3>
+        <h3>
+          Características
+        </h3>
 
         <ul>
           <li>
@@ -260,10 +275,12 @@ export default function ProductInfo() {
         </ul>
       </div>
 
-      <h3>Cores</h3>
+      <h3>
+        Cores
+      </h3>
 
       <div className="colors">
-        {MV01_VARIANTS.map(
+        {product.variants.map(
           (item) => (
             <button
               type="button"
@@ -280,20 +297,16 @@ export default function ProductInfo() {
                 })
               }
             >
-              <span
-                className={`color-swatch color-swatch-${item.slug}`}
-              />
-
-              <span>
-                {item.color}
-              </span>
+              {item.color}
             </button>
           )
         )}
       </div>
 
       <div className="size-title">
-        <h3>Tamanhos</h3>
+        <h3>
+          Tamanhos
+        </h3>
 
         <span>
           {availableSizes.length}{" "}
@@ -302,35 +315,42 @@ export default function ProductInfo() {
       </div>
 
       <div className="sizes">
-        {[38, 39, 40, 41, 42, 43].map(
-          (size) => {
-            const amount =
-              stock[size] || 0;
+        {[
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+        ].map((size) => {
+          const amount =
+            stock[size] || 0;
 
-            return (
-              <button
-                type="button"
-                key={size}
-                disabled={!amount}
-                title={
-                  !amount
-                    ? "Esgotado"
-                    : `${amount} em estoque`
-                }
-                className={
-                  selectedSize === size
-                    ? "selected"
-                    : ""
-                }
-                onClick={() =>
-                  setSelectedSize(size)
-                }
-              >
-                {size}
-              </button>
-            );
-          }
-        )}
+          return (
+            <button
+              type="button"
+              key={size}
+              disabled={!amount}
+              title={
+                !amount
+                  ? "Esgotado"
+                  : `${amount} em estoque`
+              }
+              className={
+                selectedSize === size
+                  ? "selected"
+                  : ""
+              }
+              onClick={() =>
+                setSelectedSize(
+                  size
+                )
+              }
+            >
+              {size}
+            </button>
+          );
+        })}
       </div>
 
       {remaining !== null &&
@@ -353,8 +373,14 @@ export default function ProductInfo() {
             onChange={(e) => {
               const digits =
                 e.target.value
-                  .replace(/\D/g, "")
-                  .slice(0, 8);
+                  .replace(
+                    /\D/g,
+                    ""
+                  )
+                  .slice(
+                    0,
+                    8
+                  );
 
               setCep(
                 digits.replace(
@@ -376,7 +402,9 @@ export default function ProductInfo() {
         </div>
 
         {delivery && (
-          <p>{delivery}</p>
+          <p>
+            {delivery}
+          </p>
         )}
       </div>
 
@@ -390,16 +418,22 @@ export default function ProductInfo() {
 
         <button
           className="cart"
-          onClick={handleAddToCart}
+          onClick={
+            handleAddToCart
+          }
         >
           Adicionar ao Carrinho
         </button>
 
         <button
           className={`cart favorite-product-button ${
-            isFavorite ? "active" : ""
+            isFavorite
+              ? "active"
+              : ""
           }`}
-          onClick={handleFavorite}
+          onClick={
+            handleFavorite
+          }
         >
           {isFavorite
             ? "♥ Favoritado"
@@ -419,7 +453,8 @@ export default function ProductInfo() {
             </strong>
 
             <p>
-              Em compras acima de R$ 699
+              Em compras acima de
+              R$ 699
             </p>
           </div>
         </div>
@@ -468,8 +503,8 @@ export default function ProductInfo() {
             </strong>
 
             <p>
-              Pedido preparado em até 2
-              dias úteis
+              Pedido preparado em até
+              2 dias úteis
             </p>
           </div>
         </div>
