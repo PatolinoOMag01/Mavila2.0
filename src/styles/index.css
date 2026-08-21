@@ -210,3 +210,9 @@ body {
 
   cursor: pointer;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+/* ACESSIBILIDADE E POLIMENTO GLOBAL */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #fff;outline-offset:3px}button:disabled{cursor:not-allowed}img{max-width:100%}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

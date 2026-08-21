@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+import Reveal from "./Reveal";
+
 import "../styles/Highlights.css";
 
 export default function Highlights() {
@@ -33,36 +36,54 @@ export default function Highlights() {
 
   return (
     <section className="highlights">
-      <div className="highlights-header">
-        <span>SELEÇÃO MAVILA</span>
 
-        <h1>DESTAQUES MAVILA</h1>
-      </div>
+      <Reveal>
+        <div className="highlights-header">
+          <span>SELEÇÃO MAVILA</span>
+
+          <h1>DESTAQUES MAVILA</h1>
+        </div>
+      </Reveal>
 
       <div className="highlights-grid">
-        {highlights.map((item) => (
-          <div
-            className={item.className}
+
+        {highlights.map((item, index) => (
+          <Reveal
             key={item.title}
-            style={{
-              backgroundImage: `url(${item.image})`,
-            }}
+            delay={index * 0.12}
+            y={40}
+            className={
+              index === 0
+                ? "highlight-reveal highlight-reveal-main"
+                : "highlight-reveal"
+            }
           >
-            <div className="highlight-overlay">
-              <h2>{item.title}</h2>
+            <div
+              className={item.className}
+              style={{
+                backgroundImage: `url(${item.image})`,
+              }}
+            >
+              <div className="highlight-overlay">
 
-              <p>{item.description}</p>
+                <h2>{item.title}</h2>
 
-              <Link
-                to={item.link}
-                className="highlight-button"
-              >
-                {item.button}
-              </Link>
+                <p>{item.description}</p>
+
+                <Link
+                  to={item.link}
+                  className="highlight-button"
+                >
+                  {item.button}
+                </Link>
+
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
+
       </div>
+
     </section>
   );
 }

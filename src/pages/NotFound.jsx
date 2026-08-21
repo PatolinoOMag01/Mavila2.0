@@ -1,8 +1,2 @@
-export default function NotFound() {
-  return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-      <h1>404</h1>
-      <p>Página não encontrada.</p>
-    </div>
-  );
-}
+import { Link } from "react-router-dom";import SEO from "../components/SEO";import "../styles/NotFound.css";
+export default function NotFound(){return <main className="not-found"><SEO title="404 — MAVILA" description="Página não encontrada."/><span>ERRO 404</span><h1>Essa rota saiu do mapa.</h1><p>A página que você tentou acessar não existe ou mudou de endereço.</p><div><Link to="/">Voltar para Home</Link><Link to="/mv01">Ver MV-01</Link></div></main>}

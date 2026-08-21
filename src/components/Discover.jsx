@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
+import FadeImage from "./FadeImage";
+import Reveal from "./Reveal";
+
 import "../styles/Discover.css";
 
 export default function Discover() {
   return (
     <section className="discover">
-      <div className="discover-left">
+
+      <Reveal
+        className="discover-left"
+        x={-40}
+        y={0}
+      >
         <span className="discover-tag">
           STREET LUXURY
         </span>
@@ -29,14 +37,20 @@ export default function Discover() {
         >
           Comprar Agora
         </Link>
-      </div>
+      </Reveal>
 
-      <div className="discover-right">
-        <img
+      <Reveal
+        className="discover-right"
+        delay={0.15}
+        x={40}
+        y={0}
+      >
+        <FadeImage
           src={`${import.meta.env.BASE_URL}mv01.png`}
           alt="Tênis Mavila MV-01"
         />
-      </div>
+      </Reveal>
+
     </section>
   );
 }

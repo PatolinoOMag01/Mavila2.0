@@ -1,33 +1,5 @@
+import { Toaster } from "react-hot-toast";
 import { Routes, Route } from "react-router-dom";
-
-import Navbar from "./components/Navbar";
-
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import Favorites from "./pages/Favorites";
-import Checkout from "./pages/Checkout";
-import MVClub from "./pages/MVClub";
-import NotFound from "./pages/NotFound";
-import Profile from "./pages/Profile";
-import OrderConfirmed from "./pages/OrderConfirmed";
-
-function App() {
-  return (
-    <>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/mv01" element={<Product />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/club" element={<MVClub />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/pedido-confirmado" element={<OrderConfirmed />} />
-      </Routes>
-    </>
-  );
-}
-
-export default App;
+import Navbar from "./components/Navbar";import BackToTop from "./components/BackToTop";import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/Home";import Product from "./pages/Product";import Favorites from "./pages/Favorites";import Checkout from "./pages/Checkout";import MVClub from "./pages/MVClub";import NotFound from "./pages/NotFound";import Profile from "./pages/Profile";import OrderConfirmed from "./pages/OrderConfirmed";import About from "./pages/About";import FAQ from "./pages/FAQ";import Exchanges from "./pages/Exchanges";
+export default function App(){return <><Toaster position="top-right" toastOptions={{duration:2500,style:{background:"#111",color:"#fff",border:"1px solid #2a2a2a"}}}/><Navbar/><ScrollToTop/><Routes><Route path="/" element={<Home/>}/><Route path="/mv01" element={<Product/>}/><Route path="/favorites" element={<Favorites/>}/><Route path="/checkout" element={<Checkout/>}/><Route path="/club" element={<MVClub/>}/><Route path="/profile" element={<Profile/>}/><Route path="/pedido-confirmado" element={<OrderConfirmed/>}/><Route path="/sobre" element={<About/>}/><Route path="/faq" element={<FAQ/>}/><Route path="/trocas" element={<Exchanges/>}/><Route path="*" element={<NotFound/>}/></Routes><BackToTop/></>}

@@ -1,113 +1,328 @@
 .related {
-  padding: 120px 8%;
+  padding: 110px 8%;
+
   background: #0f0f0f;
+
+  color: white;
 }
 
+
+/* ========================================
+   HEADER
+======================================== */
+
 .related-header {
+  max-width: 650px;
+
+  margin: 0 auto 55px;
+
   text-align: center;
-  margin-bottom: 60px;
 }
 
 .related-header span {
-  color: #888;
-  letter-spacing: 3px;
+  color: #777;
+
   font-size: 12px;
+  letter-spacing: 4px;
 }
 
 .related-header h2 {
-  color: white;
+  margin-top: 12px;
+
   font-size: 42px;
-  margin-top: 10px;
+  line-height: 1.1;
 }
+
+.related-header p {
+  max-width: 500px;
+
+  margin: 15px auto 0;
+
+  color: #888;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   GRID
+======================================== */
 
 .related-grid {
+  max-width: 1400px;
+
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 25px;
 }
 
+.related-reveal {
+  min-width: 0;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
 .related-card {
-  background: #171717;
-  border: 1px solid #222;
-  border-radius: 24px;
+  height: 100%;
+
   overflow: hidden;
 
-  transition: 0.35s ease;
+  background: #151515;
+
+  border: 1px solid #222;
+  border-radius: 24px;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .related-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
 
-  border-color: #444;
+  border-color: #3a3a3a;
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35);
+    0 20px 50px
+    rgba(0, 0, 0, 0.35);
+}
+
+
+/* ========================================
+   IMAGEM
+======================================== */
+
+.related-image-link {
+  display: block;
+
+  text-decoration: none;
 }
 
 .related-image {
-  height: 260px;
+  height: 280px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  overflow: hidden;
 
   background:
     radial-gradient(
       circle,
-      rgba(255,255,255,0.05),
-      transparent
+      rgba(255, 255, 255, 0.06),
+      transparent 65%
     );
 }
 
-.related-image img {
-  width: 80%;
-  transition: 0.35s ease;
+.related-image .fade-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.related-card:hover img {
-  transform: scale(1.08);
+.related-image img {
+  width: 88%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.4s ease;
 }
+
+.related-card:hover .related-image img {
+  transform: scale(1.06);
+}
+
+
+/* ========================================
+   CONTEÚDO
+======================================== */
 
 .related-content {
-  padding: 25px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.related-category {
+  margin-bottom: 8px;
+
+  color: #666;
+
+  font-size: 10px;
+  letter-spacing: 3px;
 }
 
 .related-content h3 {
-  color: white;
-  margin-bottom: 10px;
+  margin: 0;
+
+  font-size: 25px;
 }
 
-.related-content p {
-  color: #bcbcbc;
-  margin-bottom: 20px;
+.related-description {
+  margin-top: 6px;
+
+  color: #888;
+
+  font-size: 14px;
 }
 
-.related-content button {
+.related-price {
+  display: block;
+
+  margin-top: 18px;
+
+  font-size: 19px;
+}
+
+.related-button {
   width: 100%;
+  min-height: 50px;
 
-  padding: 14px;
+  margin-top: 22px;
 
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 999px;
 
   background: white;
   color: black;
 
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 800;
 
-  transition: 0.3s ease;
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
-.related-content button:hover {
-  transform: scale(1.02);
+.related-button:hover {
+  transform: translateY(-2px);
+
+  background: #e8e8e8;
 }
 
-@media (max-width: 768px) {
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
   .related {
-    padding: 80px 20px;
+    padding: 90px 30px;
+  }
+
+  .related-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .related {
+    padding:
+      70px
+      16px;
+  }
+
+  .related-header {
+    margin-bottom: 35px;
+  }
+
+  .related-header span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
   }
 
   .related-header h2 {
-    font-size: 32px;
+    font-size: 31px;
   }
+
+  .related-header p {
+    max-width: 320px;
+
+    font-size: 13px;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .related-card {
+    border-radius: 20px;
+  }
+
+  .related-card:hover {
+    transform: none;
+  }
+
+  .related-image {
+    height: 240px;
+
+    padding: 15px;
+  }
+
+  .related-content {
+    padding: 20px;
+  }
+
+  .related-content h3 {
+    font-size: 23px;
+  }
+
+  .related-price {
+    font-size: 18px;
+  }
+
+}
+
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 400px) {
+
+  .related {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .related-header h2 {
+    font-size: 28px;
+  }
+
+  .related-image {
+    height: 215px;
+  }
+
 }

@@ -1,8 +1,12 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+
+import Reveal from "./Reveal";
 import "../styles/ColorSection.css";
 
 export default function ColorSection() {
   const base = import.meta.env.BASE_URL;
+  const containerRef = useRef(null);
 
   const colors = [
     {
@@ -32,36 +36,74 @@ export default function ColorSection() {
     },
   ];
 
-  const handleWheel = (e) => {
-    const container = e.currentTarget;
+  useEffect(() => {
+    const container = containerRef.current;
 
-    e.preventDefault();
+    if (!container) return;
 
-    container.scrollLeft += e.deltaY;
-  };
+    const handleWheel = (event) => {
+      // impede a página de subir/descer
+      event.preventDefault();
+      event.stopPropagation();
+
+      // transforma scroll vertical em horizontal
+      const movement =
+        Math.abs(event.deltaY) > Math.abs(event.deltaX)
+          ? event.deltaY
+          : event.deltaX;
+
+      container.scrollLeft += movement;
+    };
+
+    container.addEventListener(
+      "wheel",
+      handleWheel,
+      {
+        passive: false,
+        capture: true,
+      }
+    );
+
+    return () => {
+      container.removeEventListener(
+        "wheel",
+        handleWheel,
+        {
+          capture: true,
+        }
+      );
+    };
+  }, []);
 
   return (
     <section className="colors-section">
-      <h1>ESCOLHA SUA COR</h1>
+      <Reveal>
+        <h1>ESCOLHA SUA COR</h1>
+      </Reveal>
 
       <div
+        ref={containerRef}
         className="colors-container"
-        onWheel={handleWheel}
       >
-        {colors.map((item) => (
-          <Link
-            to={`/mv01?cor=${item.slug}`}
-            className="color-card"
+        {colors.map((item, index) => (
+          <Reveal
             key={item.slug}
-            aria-label={`Ver MV-01 na cor ${item.color}`}
+            delay={index * 0.08}
           >
-            <img
-              src={item.image}
-              alt={`MAVILA ${item.color}`}
-            />
+            <Link
+              to={`/mv01?cor=${item.slug}`}
+              className="color-card"
+              aria-label={`Ver MV-01 na cor ${item.color}`}
+            >
+              <img
+                src={item.image}
+                alt={`MAVILA ${item.color}`}
+                loading="lazy"
+              />
 
-            <h2>{item.color}</h2>
-          </Link>
+              <h2>{item.color}</h2>
+            </Link>
+          </Reveal>
         ))}
       </div>
     </section>

@@ -1,62 +1,82 @@
-import { createContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useEffect,
+  useState,
+} from "react";
 
-export const FavoritesContext = createContext();
+export const FavoritesContext =
+  createContext();
 
-export function FavoritesProvider({ children }) {
+export function FavoritesProvider({
+  children,
+}) {
+  const [favorites, setFavorites] =
+    useState(() => {
+      const saved =
+        localStorage.getItem(
+          "mavila-favorites"
+        );
 
-  const [favorites, setFavorites] = useState(() => {
-
-    const saved = localStorage.getItem("mavila-favorites");
-
-    return saved ? JSON.parse(saved) : [];
-
-  });
+      return saved
+        ? JSON.parse(saved)
+        : [];
+    });
 
   useEffect(() => {
-
     localStorage.setItem(
       "mavila-favorites",
       JSON.stringify(favorites)
     );
-
   }, [favorites]);
 
   function addFavorite(product) {
+    setFavorites((prev) => {
+      const exists = prev.find(
+        (item) =>
+          item.name === product.name &&
+          item.color === product.color
+      );
 
-    const exists = favorites.find(
-      item => item.name === product.name
-    );
+      if (exists) {
+        return prev;
+      }
 
-    if (!exists) {
-      setFavorites(prev => [...prev, product]);
-    }
-
+      return [
+        ...prev,
+        product,
+      ];
+    });
   }
 
-  function removeFavorite(name) {
-
-    setFavorites(
-      favorites.filter(
-        item => item.name !== name
+  function removeFavorite(
+    name,
+    color
+  ) {
+    setFavorites((prev) =>
+      prev.filter(
+        (item) =>
+          !(
+            item.name === name &&
+            item.color === color
+          )
       )
     );
+  }
 
+  function clearFavorites() {
+    setFavorites([]);
   }
 
   return (
-
     <FavoritesContext.Provider
       value={{
         favorites,
         addFavorite,
-        removeFavorite
+        removeFavorite,
+        clearFavorites,
       }}
     >
-
       {children}
-
     </FavoritesContext.Provider>
-
   );
-
 }

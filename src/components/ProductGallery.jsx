@@ -6,6 +6,7 @@ export default function ProductGallery() {
   const base = import.meta.env.BASE_URL;
 
   const [searchParams] = useSearchParams();
+  const [loading, setLoading] = useState(true);
 
   const colorImages = {
     preto: `${base}mv01.png`,
@@ -28,37 +29,52 @@ export default function ProductGallery() {
   const initialImage =
     colorImages[urlColor] || `${base}mv01.png`;
 
-  const [selectedImage, setSelectedImage] = useState(initialImage);
+  const [selectedImage, setSelectedImage] =
+    useState(initialImage);
 
   useEffect(() => {
     const color = searchParams.get("cor");
 
     if (colorImages[color]) {
+      setLoading(true);
       setSelectedImage(colorImages[color]);
     }
   }, [searchParams]);
 
+  function handleImageChange(image) {
+    if (selectedImage === image) {
+      return;
+    }
+
+    setLoading(true);
+    setSelectedImage(image);
+  }
+
   return (
     <div className="gallery">
-
       <div className="thumbnails">
-
         {images.map((image, index) => (
-
-          <img
-            key={index}
-            src={image}
-            alt={`MV-01 opção ${index + 1}`}
+          <button
+            type="button"
             className={
               selectedImage === image
-                ? "thumb active"
-                : "thumb"
+                ? "thumb-wrapper active"
+                : "thumb-wrapper"
             }
-            onClick={() => setSelectedImage(image)}
-          />
-
+            key={image}
+            onClick={() =>
+              handleImageChange(image)
+            }
+            aria-label={`Ver opção ${index + 1}`}
+          >
+            <img
+              src={image}
+              alt={`MV-01 opção ${index + 1}`}
+              className="thumb"
+              loading="lazy"
+            />
+          </button>
         ))}
-
       </div>
 
       <motion.div
@@ -68,14 +84,21 @@ export default function ProductGallery() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
+        {loading && (
+          <div className="image-skeleton" />
+        )}
 
         <img
           src={selectedImage}
-          alt="MV-01"
+          alt="Tênis Mavila MV-01"
+          className={
+            loading
+              ? "product-main-img loading"
+              : "product-main-img loaded"
+          }
+          onLoad={() => setLoading(false)}
         />
-
       </motion.div>
-
     </div>
   );
 }
