@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import SEO from "../components/SEO";
+import "../styles/MVClub.css";
 import { isEarlyAccessConfigured, joinEarlyAccess } from "../services/earlyAccess";
 
 export default function MVClub() {
