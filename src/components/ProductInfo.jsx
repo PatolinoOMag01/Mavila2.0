@@ -201,8 +201,8 @@ export default function ProductInfo({
 
     setDelivery(
       end % 2 === 0
-        ? "Chega em 3 a 5 dias úteis — frete grátis"
-        : "Chega em 4 a 7 dias úteis — frete grátis"
+        ? "Prazo de entrega disponível após o lançamento"
+        : "Prazo de entrega disponível após o lançamento"
     );
   }
 
@@ -216,15 +216,17 @@ export default function ProductInfo({
         {product.name}
       </h1>
 
+      <p role="status" style={{margin:"12px 0",color:"#aaa",fontSize:"13px",letterSpacing:"1px"}}>CONCEITO EM DESENVOLVIMENTO • AINDA NÃO DISPONÍVEL PARA VENDA</p>
+
       <span className="subtitle">
         {product.subtitle}
       </span>
 
       <div className="rating">
-        ★★★★★
+        ✦
 
         <span>
-          4.9 • avaliações verificadas
+          Prévia conceitual • sem avaliações de compradores
         </span>
       </div>
 
