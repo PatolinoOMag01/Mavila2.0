@@ -8,21 +8,21 @@ export default function NewCollection() {
   const products = [
     {
       name: "MV-01",
-      description: "Street Luxury",
+      description: "Conceito • Preto Carbono",
       image: `${base}mv01.png`,
-      link: "/mv01",
+      link: "/mv01?cor=preto",
     },
     {
-      name: "MV-02",
-      description: "Urban Motion",
+      name: "MV-01 / SAPHIRE",
+      description: "Conceito • Saphire",
       image: `${base}mv02.png`,
-      link: "/mv01",
+      link: "/mv01?cor=saphire",
     },
     {
-      name: "MV-03",
-      description: "Future Flow",
+      name: "MV-01 / ALLUCARD",
+      description: "Conceito • Allucard",
       image: `${base}mv03.png`,
-      link: "/mv01",
+      link: "/mv01?cor=allucard",
     },
   ];
 
@@ -31,10 +31,10 @@ export default function NewCollection() {
       <div className="collection-header">
         <span>NOVA ERA MAVILA</span>
 
-        <h1>NOVA COLEÇÃO</h1>
+        <h1>PRIMEIROS CONCEITOS</h1>
 
         <p>
-          Design premium, conforto absoluto e identidade urbana.
+          Conheça as primeiras versões visuais do MV-01. Produto ainda em desenvolvimento.
         </p>
       </div>
 
