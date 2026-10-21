@@ -35,3 +35,4 @@ export default function Checkout() {
       </aside>
     </main>
   </PageTransition>;
+}
